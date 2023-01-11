@@ -10,7 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.connect.presentation.theme.ConnectTheme
+import com.example.connect.presentation.ui.theme.ConnectTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
