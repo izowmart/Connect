@@ -17,6 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavController
 import com.example.connect.R
 import com.example.connect.presentation.util.Screen
+import com.example.connect.util.Constants.SPLASH_SCREEN_DURATION
 import kotlinx.coroutines.delay
 
 @Composable
@@ -41,7 +42,7 @@ fun SplashScreen(
                 }
             )
         )
-        delay(200) //We delay a bit before we navigate to the login screen
+        delay(SPLASH_SCREEN_DURATION) //We delay a bit before we navigate to the login screen
         navController.popBackStack()
         navController.navigate(Screen.LoginScreen.route)
     }
