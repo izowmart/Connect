@@ -8,21 +8,22 @@ import androidx.navigation.NavHostController
 import androidx.navigation.Navigation
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.connect.presentation.login.LoginScreen
 import com.example.connect.presentation.splash.SplashScreen
 
 @Composable
 fun Navigation(navController : NavHostController) {
     NavHost(
         navController = navController,
-        startDestination = Screen.LoginScreen.route,
+        startDestination = Screen.SplashScreen.route,
         modifier = Modifier.fillMaxSize()
     ) {
         composable(Screen.SplashScreen.route) {
             SplashScreen(navController = navController)
         }
-//        composable(Screen.LoginScreen.route) {
-//            LoginScreen(navController = navController)
-//        }
+        composable(Screen.LoginScreen.route) {
+            LoginScreen(navController = navController)
+        }
 //        composable(Screen.RegisterScreen.route) {
 //            RegisterScreen(navController = navController)
 //        }

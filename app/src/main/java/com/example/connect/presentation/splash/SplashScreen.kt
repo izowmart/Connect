@@ -32,6 +32,7 @@ fun SplashScreen(
     val overshootInterpolator = remember {
         OvershootInterpolator(2f)
     }
+
     LaunchedEffect(key1 = true){
         scale.animateTo(
             targetValue = 0.5f,
@@ -53,9 +54,9 @@ fun SplashScreen(
     ) {
 
         Image(
-            modifier = Modifier.scale(scale.value),
-            painter = painterResource(id = R.drawable.ic_launcher_foreground),
-            contentDescription = "logo"
+            painter = painterResource(id = R.drawable.logo),
+            contentDescription = "Logo",
+            modifier = Modifier.scale(scale.value)
         )
     }
 }
