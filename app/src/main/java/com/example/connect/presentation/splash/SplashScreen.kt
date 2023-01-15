@@ -18,14 +18,18 @@ import androidx.navigation.NavController
 import com.example.connect.R
 import com.example.connect.presentation.util.Screen
 import com.example.connect.util.Constants.SPLASH_SCREEN_DURATION
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withContext
 
 @Composable
 fun SplashScreen(
-    navController: NavController
+    navController: NavController,
+    dispatcher: CoroutineDispatcher = Dispatchers.Main
 ) {
 
-    val scale = remember{
+    val scale = remember {
         Animatable(0f)
     }
 
@@ -33,19 +37,22 @@ fun SplashScreen(
         OvershootInterpolator(2f)
     }
 
-    LaunchedEffect(key1 = true){
-        scale.animateTo(
-            targetValue = 0.5f,
-            animationSpec = tween(
-                durationMillis = 500,
-                easing = {
-                    overshootInterpolator.getInterpolation(it)
-                }
+    LaunchedEffect(key1 = true) {
+        withContext(dispatcher){
+            scale.animateTo(
+                targetValue = 0.5f,
+                animationSpec = tween(
+                    durationMillis = 500,
+                    easing = {
+                        overshootInterpolator.getInterpolation(it)
+                    }
+                )
             )
-        )
-        delay(SPLASH_SCREEN_DURATION) //We delay a bit before we navigate to the login screen
-        navController.popBackStack()
-        navController.navigate(Screen.LoginScreen.route)
+            delay(SPLASH_SCREEN_DURATION) //We delay a bit before we navigate to the login screen
+            navController.popBackStack()
+            navController.navigate(Screen.LoginScreen.route)
+        }
+
     }
 
     Box(

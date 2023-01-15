@@ -8,16 +8,21 @@ import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import com.example.connect.presentation.MainActivity
 import com.example.connect.presentation.ui.theme.ConnectTheme
 import com.example.connect.presentation.util.Screen
+import com.example.connect.util.Constants.SPLASH_SCREEN_DURATION
 import io.mockk.MockKAnnotations
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.verify
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.*
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+@OptIn(ExperimentalCoroutinesApi::class)
 @RunWith(AndroidJUnit4::class)
 class SplashScreenTest{
     
@@ -32,12 +37,15 @@ class SplashScreenTest{
         MockKAnnotations.init(this)
 
     }
+
+    private val testDispatcher = TestCoroutineDispatcher()
     
     @Test
-    fun splashScreen_displaysAndDisappears() = runBlocking { 
+    fun splashScreen_displaysAndDisappears() = testDispatcher.runBlockingTest {
         composeTestRule.setContent { 
             ConnectTheme {
-                SplashScreen(navController = navController)
+                SplashScreen(navController = navController,
+                dispatcher = testDispatcher)
             }
         }
 
@@ -45,9 +53,11 @@ class SplashScreenTest{
             .onNodeWithContentDescription("Logo")
             .assertExists()
 
-//        verify {
-//            navController.popBackStack()
-//            navController.navigate(Screen.LoginScreen.route)
-//        }
+        advanceTimeBy(SPLASH_SCREEN_DURATION)
+
+        verify {
+            navController.popBackStack()
+            navController.navigate(Screen.LoginScreen.route)
+        }
     }
 }

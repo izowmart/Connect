@@ -8,6 +8,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -47,6 +48,19 @@ class StandardTextFieldTest {
                )
            }
        }
+       val expectedString = "aaaaa"
+       composeTestRule
+           .onNodeWithTag(STANDARD_TEXT_FIELD)
+           .performTextClearance()
+       composeTestRule
+           .onNodeWithTag(STANDARD_TEXT_FIELD)
+           .performTextInput(expectedString)
+       composeTestRule
+           .onNodeWithTag(STANDARD_TEXT_FIELD)
+           .performTextInput("a")
+       composeTestRule
+           .onNodeWithTag(STANDARD_TEXT_FIELD)
+           .assertTextEquals(expectedString)
    }
     @Test
     fun enterPassword_toggleVisibility_passwordVisible(){
