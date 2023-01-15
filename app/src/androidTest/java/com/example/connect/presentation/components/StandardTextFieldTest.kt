@@ -13,6 +13,7 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.connect.presentation.MainActivity
+import com.example.connect.presentation.util.TestTags.PASSWORD_TOGGLE
 import com.example.connect.presentation.util.TestTags.STANDARD_TEXT_FIELD
 import org.junit.Assert.*
 
@@ -79,5 +80,11 @@ class StandardTextFieldTest {
                 )
             }
         }
+        composeTestRule
+            .onNodeWithTag(STANDARD_TEXT_FIELD)
+            .performTextInput("aaaaa")
+
+        composeTestRule
+            .onNodeWithTag(PASSWORD_TOGGLE)
     }
 }
