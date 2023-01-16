@@ -9,6 +9,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.connect.presentation.login.LoginScreen
+import com.example.connect.presentation.register.RegisterScreen
 import com.example.connect.presentation.splash.SplashScreen
 
 @Composable
@@ -24,9 +25,9 @@ fun Navigation(navController : NavHostController) {
         composable(Screen.LoginScreen.route) {
             LoginScreen(navController = navController)
         }
-//        composable(Screen.RegisterScreen.route) {
-//            RegisterScreen(navController = navController)
-//        }
+        composable(Screen.RegisterScreen.route) {
+            RegisterScreen(navController = navController)
+        }
 //        composable(Screen.MainFeedScreen.route) {
 //            MainFeedScreen(navController = navController)
 //        }
