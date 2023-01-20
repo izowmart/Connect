@@ -39,7 +39,7 @@ import com.example.connect.util.Constants.MAX_POST_DESCRIPTION_LINES
 @Composable
 fun Post(
     post: Post,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     showProfileImage: Boolean = true,
     onPostClick: () -> Unit = {}
 ) {
