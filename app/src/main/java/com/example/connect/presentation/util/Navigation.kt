@@ -8,8 +8,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.Navigation
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.connect.presentation.activity.ActivityScreen
+import com.example.connect.presentation.chat.ChatScreen
 import com.example.connect.presentation.login.LoginScreen
 import com.example.connect.presentation.main_feed.MainFeedScreen
+import com.example.connect.presentation.profile.ProfileScreen
 import com.example.connect.presentation.register.RegisterScreen
 import com.example.connect.presentation.splash.SplashScreen
 
@@ -32,15 +35,15 @@ fun Navigation(navController : NavHostController) {
         composable(Screen.MainFeedScreen.route) {
             MainFeedScreen(navController = navController)
         }
-//        composable(Screen.ChatScreen.route) {
-//            ChatScreen(navController = navController)
-//        }
-//        composable(Screen.ActivityScreen.route) {
-//            ActivityScreen(navController = navController)
-//        }
-//        composable(Screen.ProfileScreen.route) {
-//            ProfileScreen(navController = navController)
-//        }
+        composable(Screen.ChatScreen.route) {
+            ChatScreen(navController = navController)
+        }
+        composable(Screen.ActivityScreen.route) {
+            ActivityScreen(navController = navController)
+        }
+        composable(Screen.ProfileScreen.route) {
+            ProfileScreen(navController = navController)
+        }
 //        composable(Screen.EditProfileScreen.route) {
 //            EditProfileScreen(navController = navController)
 //        }
