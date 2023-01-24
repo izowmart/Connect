@@ -5,8 +5,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,16 +15,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role.Companion.Image
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.connect.R
+import com.example.connect.domain.models.Comment
 import com.example.connect.domain.models.Post
 import com.example.connect.presentation.components.ActionRow
 import com.example.connect.presentation.components.StandardToolbar
 import com.example.connect.presentation.ui.theme.*
-import org.w3c.dom.Comment
 
 @Composable
 fun PostDetailScreen(
@@ -134,7 +134,13 @@ fun PostDetailScreen(
                             vertical = SpaceSmall
                         ),
                     comment = Comment(
-                        use
+                        username = "Isaac Mutahi $it",
+                        comment = "Lorem ipsum dolor sit amet, consetetur, asdfadsf\n" +
+                                "diam nonumy eirmod tempor invidunt ut fda fdsa\n" +
+                                "magna aliquyam erat, sed diam voluptua" +
+                                "Lorem ipsum dolor sit amet, consetetur, asdfadsf\\n\" +\n" +
+                                "\"diam nonumy eirmod tempor invidunt ut fda fdsa\\n\" +\n" +
+                                "\"magna aliquyam erat, sed diam voluptua",
                     )
                 )
             }
@@ -142,13 +148,83 @@ fun PostDetailScreen(
 
     }
 }
-
 @Composable
 fun Comment(
     modifier: Modifier = Modifier,
     comment: Comment = Comment(),
-    onLikeClick : (Boolean) -> Unit = {}
-
+    onLikeClick: (Boolean) -> Unit = {}
 ) {
-
+    Card(
+        modifier = modifier,
+        elevation = 5.dp,
+        shape = MaterialTheme.shapes.medium,
+        backgroundColor = MaterialTheme.colors.onSurface,
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(SpaceMedium)
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.logo),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .size(ProfilePictureSizeExtraSmall)
+                    )
+                    Spacer(modifier = Modifier.width(SpaceSmall))
+                    Text(
+                        text = comment.username,
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.body2,
+                        color = MaterialTheme.colors.onBackground
+                    )
+                }
+                Text(
+                    text = "2 days ago",
+                    style = MaterialTheme.typography.body2
+                )
+            }
+            Spacer(modifier = Modifier.height(SpaceMedium))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                Text(
+                    text = comment.comment,
+                    style = MaterialTheme.typography.body2,
+                    color = MaterialTheme.colors.onBackground,
+                    modifier = Modifier.weight(9f)
+                )
+                Spacer(modifier = Modifier.width(SpaceMedium))
+                IconButton(
+                    onClick = {
+                        onLikeClick(comment.isLiked)
+                    },
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Favorite,
+                        contentDescription = if (comment.isLiked) {
+                            stringResource(id = R.string.unlike)
+                        } else stringResource(id = R.string.like)
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(SpaceMedium))
+            Text(
+                text = stringResource(id = R.string.liked_by_x_people, comment.likeCount),
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.body2,
+                color = MaterialTheme.colors.onBackground
+            )
+        }
+    }
 }
