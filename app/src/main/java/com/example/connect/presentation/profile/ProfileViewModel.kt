@@ -12,6 +12,7 @@ class ProfileViewModel @Inject constructor(
 
 ) : ViewModel() {
 
+
     private val _toolbarState = mutableStateOf(ProfileToolbarState())
     val toolbarState: State<ProfileToolbarState> = _toolbarState
 
