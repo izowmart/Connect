@@ -35,10 +35,14 @@ import androidx.navigation.NavController
 import com.example.connect.R
 import com.example.connect.presentation.components.StandardTextField
 import com.example.connect.presentation.components.StandardToolbar
+import com.example.connect.presentation.edit_profile.components.Chip
 import com.example.connect.presentation.ui.theme.ProfilePictureSizeLarge
 import com.example.connect.presentation.ui.theme.SpaceLarge
 import com.example.connect.presentation.ui.theme.SpaceMedium
 import com.example.connect.presentation.util.states.StandardTextFieldState
+import com.google.accompanist.flowlayout.FlowRow
+import com.google.accompanist.flowlayout.MainAxisAlignment
+import kotlin.random.Random
 
 @Composable
 fun EditProfileScreen(
@@ -88,7 +92,7 @@ fun EditProfileScreen(
                 StandardTextField(
                     modifier = Modifier
                         .fillMaxWidth(),
-                    text = viewModel.usernameState.value.text ,
+                    text = viewModel.usernameState.value.text,
                     hint = stringResource(id = R.string.username),
                     error = viewModel.usernameState.value.error,
                     leadingIcon = Icons.Default.Person,
@@ -165,7 +169,30 @@ fun EditProfileScreen(
                 )
                 Spacer(modifier = Modifier.height(SpaceLarge))
 
-                //Todo Chips here
+                FlowRow(
+                    modifier = Modifier.fillMaxWidth(),
+                    mainAxisAlignment = MainAxisAlignment.Center,
+                    mainAxisSpacing = SpaceMedium,
+                    crossAxisSpacing = SpaceMedium
+                ) {
+                    listOf(
+                        "Kotlin",
+                        "Javascript",
+                        "Typescript",
+                        "C++",
+                        "C",
+                        "Python",
+                        "Golang"
+                    ).forEach {
+                        Chip(
+                            text = it,
+                            selected = Random.nextInt(until = 2) == 0
+                        ) {
+
+                        }
+                    }
+
+                }
             }
         }
 
