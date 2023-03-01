@@ -5,6 +5,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.navigation.NavController
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
+import com.example.connect.feature_auth.presentation.splash.SplashScreen
 import com.example.connect.presentation.MainActivity
 import com.example.connect.presentation.ui.theme.ConnectTheme
 import com.example.connect.presentation.util.Screen

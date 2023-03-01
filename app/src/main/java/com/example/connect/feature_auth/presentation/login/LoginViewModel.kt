@@ -1,4 +1,4 @@
-package com.example.connect.presentation.register
+package com.example.connect.feature_auth.presentation.login
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -7,13 +7,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class RegisterViewModel @Inject constructor(): ViewModel() {
+class LoginViewModel @Inject constructor(): ViewModel() {
 
     private val _usernameText = mutableStateOf("")
     val usernameText: State<String> = _usernameText
-
-    private val _emailText = mutableStateOf("")
-    val emailText: State<String> = _emailText
 
     private val _passwordText = mutableStateOf("")
     val passwordText: State<String> = _passwordText
@@ -24,18 +21,11 @@ class RegisterViewModel @Inject constructor(): ViewModel() {
     private val _usernameError = mutableStateOf("")
     val usernameError: State<String> = _usernameError
 
-    private val _emailError = mutableStateOf("")
-    val emailError: State<String> = _emailError
-
     private val _passwordError = mutableStateOf("")
     val passwordError: State<String> = _passwordError
 
     fun setUsernameText(username: String) {
         _usernameText.value = username
-    }
-
-    fun setEmailText(email: String) {
-        _emailText.value = email
     }
 
     fun setPasswordText(password: String) {
@@ -44,10 +34,6 @@ class RegisterViewModel @Inject constructor(): ViewModel() {
 
     fun setIsUsernameError(error: String) {
         _usernameError.value = error
-    }
-
-    fun setIsEmailError(error: String) {
-        _emailError.value = error
     }
 
     fun setIsPasswordError(error: String) {

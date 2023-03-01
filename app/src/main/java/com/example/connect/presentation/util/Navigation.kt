@@ -10,11 +10,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.connect.presentation.activity.ActivityScreen
 import com.example.connect.presentation.chat.ChatScreen
-import com.example.connect.presentation.login.LoginScreen
+import com.example.connect.feature_auth.presentation.login.LoginScreen
 import com.example.connect.presentation.main_feed.MainFeedScreen
 import com.example.connect.presentation.profile.ProfileScreen
-import com.example.connect.presentation.register.RegisterScreen
-import com.example.connect.presentation.splash.SplashScreen
+import com.example.connect.feature_auth.presentation.register.RegisterScreen
+import com.example.connect.feature_auth.presentation.splash.SplashScreen
 
 @Composable
 fun Navigation(navController : NavHostController) {

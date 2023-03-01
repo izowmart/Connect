@@ -1,4 +1,4 @@
-package com.example.connect.presentation.login
+package com.example.connect.feature_auth.presentation.login
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*

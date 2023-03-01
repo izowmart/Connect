@@ -1,4 +1,4 @@
-package com.example.connect.presentation.splash
+package com.example.connect.feature_auth.presentation.splash
 
 import android.view.animation.OvershootInterpolator
 import androidx.compose.animation.core.Animatable
