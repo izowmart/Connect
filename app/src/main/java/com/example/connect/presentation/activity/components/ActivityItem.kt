@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.sp
 import com.example.connect.R
 import com.example.connect.domain.models.Activity
 import com.example.connect.domain.util.ActivityAction
-import com.example.connect.presentation.ui.theme.SpaceSmall
+import com.example.connect.core.presentation.theme.SpaceSmall
 
 @Composable
 fun ActivityItem(

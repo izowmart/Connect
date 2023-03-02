@@ -12,12 +12,12 @@ import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.connect.presentation.MainActivity
-import com.example.connect.presentation.util.TestTags.PASSWORD_TOGGLE
-import com.example.connect.presentation.util.TestTags.STANDARD_TEXT_FIELD
+import com.example.connect.core.presentation.MainActivity
+import com.example.connect.core.presentation.components.StandardTextField
+import com.example.connect.core.util.TestTags.PASSWORD_TOGGLE
+import com.example.connect.core.util.TestTags.STANDARD_TEXT_FIELD
 import org.junit.Assert.*
 
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith

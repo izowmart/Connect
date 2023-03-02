@@ -15,9 +15,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.connect.R
-import com.example.connect.presentation.ui.theme.SpaceMedium
-import com.example.connect.presentation.ui.theme.SpaceSmall
-import com.example.connect.presentation.util.toPx
+import com.example.connect.core.presentation.theme.SpaceMedium
+import com.example.connect.core.presentation.theme.SpaceSmall
+import com.example.connect.core.util.toPx
 
 @Composable
 fun BannerSection(

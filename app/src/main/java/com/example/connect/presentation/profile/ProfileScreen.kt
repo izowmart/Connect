@@ -31,14 +31,14 @@ import androidx.navigation.NavController
 import com.example.connect.R
 import com.example.connect.domain.models.Post
 import com.example.connect.domain.models.User
-import com.example.connect.presentation.components.Post
+import com.example.connect.core.presentation.components.Post
 import com.example.connect.presentation.profile.components.BannerSection
 import com.example.connect.presentation.profile.components.ProfileHeaderSection
-import com.example.connect.presentation.ui.theme.ProfilePictureSizeLarge
-import com.example.connect.presentation.ui.theme.SpaceMedium
-import com.example.connect.presentation.ui.theme.SpaceSmall
-import com.example.connect.presentation.util.Screen
-import com.example.connect.presentation.util.toPx
+import com.example.connect.core.presentation.theme.ProfilePictureSizeLarge
+import com.example.connect.core.presentation.theme.SpaceMedium
+import com.example.connect.core.presentation.theme.SpaceSmall
+import com.example.connect.core.util.Screen
+import com.example.connect.core.util.toPx
 
 @Composable
 fun ProfileScreen(

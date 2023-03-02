@@ -17,9 +17,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.connect.R
 import com.example.connect.domain.models.User
-import com.example.connect.presentation.ui.theme.SpaceLarge
-import com.example.connect.presentation.ui.theme.SpaceMedium
-import com.example.connect.presentation.ui.theme.SpaceSmall
+import com.example.connect.core.presentation.theme.SpaceLarge
+import com.example.connect.core.presentation.theme.SpaceMedium
+import com.example.connect.core.presentation.theme.SpaceSmall
 
 @Composable
 fun ProfileHeaderSection(

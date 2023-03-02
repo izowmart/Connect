@@ -33,13 +33,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 
 import androidx.navigation.NavController
 import com.example.connect.R
-import com.example.connect.presentation.components.StandardTextField
-import com.example.connect.presentation.components.StandardToolbar
+import com.example.connect.core.presentation.components.StandardTextField
+import com.example.connect.core.presentation.components.StandardToolbar
 import com.example.connect.presentation.edit_profile.components.Chip
-import com.example.connect.presentation.ui.theme.ProfilePictureSizeLarge
-import com.example.connect.presentation.ui.theme.SpaceLarge
-import com.example.connect.presentation.ui.theme.SpaceMedium
-import com.example.connect.presentation.util.states.StandardTextFieldState
+import com.example.connect.core.presentation.theme.ProfilePictureSizeLarge
+import com.example.connect.core.presentation.theme.SpaceLarge
+import com.example.connect.core.presentation.theme.SpaceMedium
+import com.example.connect.core.util.states.StandardTextFieldState
 import com.google.accompanist.flowlayout.FlowRow
 import com.google.accompanist.flowlayout.MainAxisAlignment
 import kotlin.random.Random

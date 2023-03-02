@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role.Companion.Button
 import com.example.connect.R
 import com.example.connect.domain.models.User
-import com.example.connect.presentation.ui.theme.SpaceLarge
+import com.example.connect.core.presentation.theme.SpaceLarge
 
 @Composable
 fun ProfileStats(

@@ -19,13 +19,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.connect.R
-import com.example.connect.presentation.components.StandardTextField
-import com.example.connect.presentation.components.StandardToolbar
-import com.example.connect.presentation.ui.theme.SpaceLarge
-import com.example.connect.presentation.ui.theme.SpaceMedium
-import com.example.connect.presentation.ui.theme.SpaceSmall
-import com.example.connect.presentation.util.states.StandardTextFieldState
-import dagger.hilt.android.lifecycle.HiltViewModel
+import com.example.connect.core.presentation.components.StandardTextField
+import com.example.connect.core.presentation.components.StandardToolbar
+import com.example.connect.core.presentation.theme.SpaceLarge
+import com.example.connect.core.presentation.theme.SpaceMedium
+import com.example.connect.core.presentation.theme.SpaceSmall
+import com.example.connect.core.util.states.StandardTextFieldState
 
 @Composable
 fun CreatePostScreen(

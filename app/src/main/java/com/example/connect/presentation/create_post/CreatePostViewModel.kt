@@ -3,7 +3,7 @@ package com.example.connect.presentation.create_post
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
-import com.example.connect.presentation.util.states.StandardTextFieldState
+import com.example.connect.core.util.states.StandardTextFieldState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

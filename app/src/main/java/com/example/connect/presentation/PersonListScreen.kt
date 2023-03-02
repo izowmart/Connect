@@ -14,11 +14,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import com.example.connect.R
 import com.example.connect.domain.models.User
-import com.example.connect.presentation.components.StandardToolbar
-import com.example.connect.presentation.components.UserProfileItem
-import com.example.connect.presentation.ui.theme.IconSizeMedium
-import com.example.connect.presentation.ui.theme.SpaceLarge
-import com.example.connect.presentation.ui.theme.SpaceMedium
+import com.example.connect.core.presentation.components.StandardToolbar
+import com.example.connect.core.presentation.components.UserProfileItem
+import com.example.connect.core.presentation.theme.IconSizeMedium
+import com.example.connect.core.presentation.theme.SpaceLarge
+import com.example.connect.core.presentation.theme.SpaceMedium
 
 @Composable
 fun PersonListScreen(

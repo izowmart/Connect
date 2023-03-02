@@ -20,10 +20,12 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.connect.R
-import com.example.connect.presentation.components.StandardTextField
-import com.example.connect.presentation.ui.theme.SpaceLarge
-import com.example.connect.presentation.ui.theme.SpaceMedium
-import com.example.connect.util.Constants
+import com.example.connect.core.presentation.components.StandardTextField
+import com.example.connect.core.presentation.theme.SpaceLarge
+import com.example.connect.core.presentation.theme.SpaceMedium
+import com.example.connect.core.presentation.util.UiEvent
+import com.example.connect.core.util.Constants
+import com.example.connect.feature_auth.presentation.util.AuthError
 
 @ExperimentalComposeUiApi
 @Composable
@@ -56,6 +58,7 @@ fun RegisterScreen(
                         duration = SnackbarDuration.Long
                     )
                 }
+                else -> null
             }
         }
     }

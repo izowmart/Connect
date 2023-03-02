@@ -5,7 +5,11 @@ import com.example.connect.R
 import com.example.connect.feature_auth.data.remote.AuthApi
 import com.example.connect.feature_auth.data.remote.request.CreateAccountRequest
 import com.example.connect.feature_auth.data.remote.request.LoginRequest
-import com.example.connect.util.Constants
+import com.example.connect.core.util.Constants
+import com.example.connect.core.util.Resource
+import com.example.connect.core.util.SimpleResource
+import com.example.connect.core.util.UiText
+import com.example.connect.feature_auth.domain.repository.AuthRepository
 import retrofit2.HttpException
 import java.io.IOException
 

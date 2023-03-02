@@ -21,8 +21,9 @@ import androidx.navigation.NavController
 import com.example.connect.R
 import com.example.connect.domain.models.Comment
 import com.example.connect.domain.models.Post
-import com.example.connect.presentation.components.ActionRow
-import com.example.connect.presentation.components.StandardToolbar
+import com.example.connect.core.presentation.components.ActionRow
+import com.example.connect.core.presentation.components.StandardToolbar
+import com.example.connect.core.presentation.theme.*
 import com.example.connect.presentation.ui.theme.*
 
 @Composable

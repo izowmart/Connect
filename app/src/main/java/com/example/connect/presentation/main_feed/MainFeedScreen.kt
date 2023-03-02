@@ -14,9 +14,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavController
 import com.example.connect.R
-import com.example.connect.presentation.components.Post
-import com.example.connect.presentation.components.StandardToolbar
-import com.example.connect.presentation.util.Screen
+import com.example.connect.core.presentation.components.Post
+import com.example.connect.core.presentation.components.StandardToolbar
+import com.example.connect.core.util.Screen
 
 @Composable
 fun MainFeedScreen(

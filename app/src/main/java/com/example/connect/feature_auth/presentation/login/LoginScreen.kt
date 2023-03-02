@@ -2,12 +2,13 @@ package com.example.connect.feature_auth.presentation.login
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -17,16 +18,44 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.connect.R
-import com.example.connect.presentation.components.StandardTextField
-import com.example.connect.presentation.ui.theme.SpaceLarge
-import com.example.connect.presentation.ui.theme.SpaceMedium
-import com.example.connect.presentation.util.Screen
+import com.example.connect.core.presentation.components.StandardTextField
+import com.example.connect.core.presentation.theme.SpaceLarge
+import com.example.connect.core.presentation.theme.SpaceMedium
+import com.example.connect.core.presentation.util.UiEvent
+import com.example.connect.core.util.Screen
+import com.example.connect.feature_auth.presentation.util.AuthError
+import kotlinx.coroutines.flow.collectLatest
 
 @Composable
 fun LoginScreen(
-    navController: NavController,
+    scaffoldState: ScaffoldState,
+    onNavigate: (String) -> Unit = {},
+    onLogin: () -> Unit = {},
     viewModel: LoginViewModel = hiltViewModel()
 ) {
+    val emailState = viewModel.emailState.value
+    val passwordState = viewModel.passwordState.value
+    val state = viewModel.loginState.value
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = true) {
+        viewModel.eventFlow.collectLatest { event ->
+            when (event) {
+                is UiEvent.ShowSnackbar -> {
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        message = event.uiText.asString(context)
+                    )
+                }
+                is UiEvent.Navigate -> {
+                    onNavigate(event.route)
+                }
+                is UiEvent.OnLogin -> {
+                    onLogin()
+                }
+                else -> null
+            }
+        }
+    }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -41,44 +70,46 @@ fun LoginScreen(
             verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxSize()
-                .align(Alignment.Center)
+                .align(Alignment.Center),
         ) {
-
             Text(
                 text = stringResource(id = R.string.login),
-                color = MaterialTheme.colors.onBackground,
                 style = MaterialTheme.typography.h1
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
             StandardTextField(
-                text = viewModel.usernameText.value,
+                text = emailState.text,
                 onValueChange = {
-                    viewModel.setUsernameText(it)
+                    viewModel.onEvent(LoginEvent.EnteredEmail(it))
                 },
                 keyboardType = KeyboardType.Email,
-                error = viewModel.usernameError.value,
+                error = when (emailState.error) {
+                    is AuthError.FieldEmpty -> stringResource(id = R.string.error_field_empty)
+                    else -> ""
+                },
                 hint = stringResource(id = R.string.login_hint)
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
             StandardTextField(
-                text = viewModel.passwordText.value,
+                text = passwordState.text,
                 onValueChange = {
-                    viewModel.setPasswordText(it)
+                    viewModel.onEvent(LoginEvent.EnteredPassword(it))
                 },
                 hint = stringResource(id = R.string.password_hint),
                 keyboardType = KeyboardType.Password,
-                error = viewModel.passwordError.value,
-                isPasswordVisible = viewModel.showPassword.value,
+                error = when (passwordState.error) {
+                    is AuthError.FieldEmpty -> stringResource(id = R.string.error_field_empty)
+                    else -> ""
+                },
+                isPasswordVisible = state.isPasswordVisible,
                 onPasswordToggleClick = {
-                    viewModel.setShowPassword(it)
+                    viewModel.onEvent(LoginEvent.TogglePasswordVisibility)
                 }
             )
             Spacer(modifier = Modifier.height(SpaceMedium))
             Button(
                 onClick = {
-                    navController.navigate(
-                        Screen.MainFeedScreen.route
-                    )
+                    viewModel.onEvent(LoginEvent.Login)
                 },
                 modifier = Modifier
                     .align(Alignment.End)
@@ -87,6 +118,9 @@ fun LoginScreen(
                     text = stringResource(id = R.string.login),
                     color = MaterialTheme.colors.onPrimary
                 )
+            }
+            if (state.isLoading) {
+                CircularProgressIndicator(modifier = Modifier.align(CenterHorizontally))
             }
         }
         Text(
@@ -106,13 +140,11 @@ fun LoginScreen(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .clickable {
-                    navController.navigate(
+                    onNavigate(
                         Screen.RegisterScreen.route
                     )
                 }
         )
-
     }
-
 
 }

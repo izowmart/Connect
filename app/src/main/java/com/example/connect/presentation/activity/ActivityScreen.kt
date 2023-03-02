@@ -15,8 +15,8 @@ import com.example.connect.domain.models.Activity
 import com.example.connect.domain.util.ActivityAction
 import com.example.connect.domain.util.DateFormatUtil
 import com.example.connect.presentation.activity.components.ActivityItem
-import com.example.connect.presentation.components.StandardToolbar
-import com.example.connect.presentation.ui.theme.SpaceMedium
+import com.example.connect.core.presentation.components.StandardToolbar
+import com.example.connect.core.presentation.theme.SpaceMedium
 import kotlin.random.Random
 
 @Composable
