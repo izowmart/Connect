@@ -3,6 +3,7 @@ package com.example.connect.feature_chat.domain.repository
 import com.example.connect.core.util.Resource
 import com.example.connect.feature_chat.domain.model.Chat
 import com.example.connect.feature_chat.domain.model.Message
+import com.tinder.scarlet.WebSocket
 import kotlinx.coroutines.flow.Flow
 
 interface ChatRepository {
@@ -11,13 +12,11 @@ interface ChatRepository {
 
     suspend fun getChatsForUser(): Resource<List<Chat>>
 
-    suspend fun getMessagesForChat(
-        chatId: String,
-        page: Int,
-        pageSize: Int
-    ): Resource<List<Message>>
+    suspend fun getMessagesForChat(chatId: String, page: Int, pageSize: Int): Resource<List<Message>>
 
-    fun observeChatEvents(): Flow<Message>
+    fun observeChatEvents(): Flow<WebSocket.Event>
+
     fun observeMessages(): Flow<Message>
+
     fun sendMessage(toId: String, text: String, chatId: String?)
 }

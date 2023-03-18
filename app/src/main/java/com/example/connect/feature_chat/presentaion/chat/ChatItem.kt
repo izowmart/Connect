@@ -50,15 +50,15 @@ fun ChatItem(
         ) {
             Image(
                 painter = rememberAsyncImagePainter(
-                    data = item.remoteUserProfilePictureUrl,
-                    imageLoader = imageLoader,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(ProfilePictureSizeSmall)
-                        .clip(CircleShape)
-                )
-
+                    model = item.remoteUserProfilePictureUrl,
+                    imageLoader = imageLoader
+                ),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(ProfilePictureSizeSmall)
+                    .clip(CircleShape)
             )
+
             Column(
                 modifier = Modifier
                     .fillMaxHeight()
