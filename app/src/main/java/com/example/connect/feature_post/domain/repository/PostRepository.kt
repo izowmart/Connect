@@ -2,10 +2,10 @@ package com.example.connect.feature_post.domain.repository
 
 import android.net.Uri
 import com.example.connect.core.domain.models.Comment
+import com.example.connect.core.domain.models.Post
 import com.example.connect.core.domain.models.UserItem
 import com.example.connect.core.util.Resource
 import com.example.connect.core.util.SimpleResource
-import com.example.connect.domain.models.Post
 
 
 interface PostRepository {

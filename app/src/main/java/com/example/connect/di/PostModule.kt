@@ -1,5 +1,11 @@
 package com.example.connect.di
 
+import com.example.connect.core.domain.use_case.DeletePost
+import com.example.connect.feature_post.data.remote.PostApi
+import com.example.connect.feature_post.data.repository.PostRepositoryImpl
+import com.example.connect.feature_post.domain.repository.PostRepository
+import com.example.connect.feature_post.domain.use_case.*
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

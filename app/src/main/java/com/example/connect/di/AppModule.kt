@@ -8,7 +8,10 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.compose.ui.platform.LocalContext
 import coil.ImageLoader
+import coil.decode.SvgDecoder
+import com.example.connect.core.domain.use_case.GetOwnUserIdUseCase
 import com.example.connect.core.util.Constants
+import com.example.connect.core.util.DefaultPostLiker
 import com.google.gson.Gson
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -47,22 +50,22 @@ object AppModule {
             .build()
     }
 
-    @Provides
-    @Singleton
-    fun provideImageLoader(app: Application): ImageLoader {
-        return ImageLoader.Builder(app)
-            .crossfade(true)
-            .componentRegistry {
-                add(SvgDecoder(app))
-            }
-            .build()
-    }
+//    @Provides
+//    @Singleton
+//    fun provideImageLoader(app: Application): ImageLoader {
+//        return ImageLoader.Builder(app)
+//            .crossfade(true)
+//            .componentRegistry {
+//                add(SvgDecoder(app))
+//            }
+//            .build()
+//    }
 
-    @Provides
-    @Singleton
-    fun providePostLiker(): PostLiker {
-        return DefaultPostLiker()
-    }
+//    @Provides
+//    @Singleton
+//    fun providePostLiker(): PostLiker {
+//        return DefaultPostLiker()
+//    }
 
     @Provides
     @Singleton

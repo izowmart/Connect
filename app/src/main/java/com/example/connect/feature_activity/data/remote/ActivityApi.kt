@@ -1,5 +1,10 @@
 package com.example.connect.feature_activity.data.remote
 
+import com.example.connect.core.util.Constants
+import com.example.connect.feature_activity.data.remote.dto.ActivityDto
+import retrofit2.http.GET
+import retrofit2.http.Query
+
 
 interface ActivityApi {
 

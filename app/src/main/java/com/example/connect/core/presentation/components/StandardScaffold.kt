@@ -1,9 +1,10 @@
 package com.example.connect.core.presentation.components
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
-import com.example.connect.R
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.Home
@@ -15,9 +16,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.connect.domain.models.BottomNavItem
+import com.example.connect.R
+import com.example.connect.core.domain.models.BottomNavItem
 import com.example.connect.core.util.Screen
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun StandardScaffold(
     navController: NavController,
@@ -50,6 +53,7 @@ fun StandardScaffold(
     onFabClick: () -> Unit = {},
     content: @Composable () -> Unit
 ) {
+
     Scaffold(
         bottomBar = {
             if (showBottomBar) {
@@ -95,6 +99,6 @@ fun StandardScaffold(
         floatingActionButtonPosition = FabPosition.Center,
         modifier = modifier
     ) {
-        content()
+
     }
 }

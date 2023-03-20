@@ -1,5 +1,37 @@
 package com.example.connect.core.presentation.components
 
+import android.content.Intent
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.ScaffoldState
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
+import androidx.navigation.navDeepLink
+import coil.ImageLoader
+import coil.annotation.ExperimentalCoilApi
+import com.example.connect.core.util.Screen
+import com.example.connect.feature_activity.presentaion.ActivityScreen
+import com.example.connect.feature_auth.presentation.login.LoginScreen
+import com.example.connect.feature_auth.presentation.register.RegisterScreen
+import com.example.connect.feature_auth.presentation.splash.SplashScreen
+import com.example.connect.feature_chat.presentaion.chat.ChatScreen
+import com.example.connect.feature_chat.presentaion.message.MessageScreen
+import com.example.connect.feature_post.presentation.create_post.CreatePostScreen
+import com.example.connect.feature_post.presentation.main_feed.MainFeedScreen
+import com.example.connect.feature_post.presentation.person_list.PersonListScreen
+import com.example.connect.feature_post.presentation.post_detail.PostDetailScreen
+import com.example.connect.feature_profile.presentation.edit_profile.EditProfileScreen
+import com.example.connect.feature_profile.presentation.profile.ProfileScreen
+import com.example.connect.feature_profile.presentation.search.SearchScreen
+import kotlinx.coroutines.DelicateCoroutinesApi
+
+@OptIn(DelicateCoroutinesApi::class)
 @ExperimentalComposeUiApi
 @ExperimentalCoilApi
 @ExperimentalMaterialApi

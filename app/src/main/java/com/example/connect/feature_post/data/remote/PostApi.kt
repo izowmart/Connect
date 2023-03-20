@@ -3,6 +3,9 @@ package com.example.connect.feature_post.data.remote
 import com.example.connect.core.data.dto.response.BasicApiResponse
 import com.example.connect.core.data.dto.response.UserItemDto
 import com.example.connect.core.domain.models.Post
+import com.example.connect.feature_post.data.remote.dto.CommentDto
+import com.example.connect.feature_post.data.remote.request.CreateCommentRequest
+import com.example.connect.feature_post.data.remote.request.LikeUpdateRequest
 import okhttp3.MultipartBody
 import retrofit2.http.*
 

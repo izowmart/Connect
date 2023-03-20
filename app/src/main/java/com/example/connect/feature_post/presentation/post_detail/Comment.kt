@@ -1,5 +1,28 @@
 package com.example.connect.feature_post.presentation.post_detail
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import coil.ImageLoader
+import coil.annotation.ExperimentalCoilApi
+import coil.compose.rememberImagePainter
+import com.example.connect.R
+import com.example.connect.core.domain.models.Comment
+import com.example.connect.core.presentation.theme.ProfilePictureSizeExtraSmall
+import com.example.connect.core.presentation.theme.SpaceMedium
+import com.example.connect.core.presentation.theme.SpaceSmall
+
 @ExperimentalCoilApi
 @Composable
 fun Comment(

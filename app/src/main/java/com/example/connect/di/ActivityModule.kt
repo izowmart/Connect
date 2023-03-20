@@ -1,9 +1,10 @@
 package com.example.connect.di
 
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 
+import com.example.connect.feature_activity.data.remote.ActivityApi
+import com.example.connect.feature_activity.data.repository.ActivityRepositoryImpl
+import com.example.connect.feature_activity.domain.repository.ActivityRepository
+import com.example.connect.feature_activity.domain.use_case.GetActivitiesUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
