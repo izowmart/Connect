@@ -5,9 +5,7 @@ import com.example.connect.feature_chat.data.remote.data.MessageDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-
 interface ChatApi {
-
     @GET("/api/chats")
     suspend fun getChatsForUser(): List<ChatDto>
 

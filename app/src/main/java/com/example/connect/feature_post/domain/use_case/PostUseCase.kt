@@ -1,11 +1,6 @@
 package com.example.connect.feature_post.domain.use_case
 
-import com.example.connect.R
 import com.example.connect.core.domain.use_case.DeletePost
-import com.example.connect.core.util.Resource
-import com.example.connect.core.util.SimpleResource
-import com.example.connect.core.util.UiText
-import com.example.connect.feature_post.domain.repository.PostRepository
 
 data class PostUseCases(
     val getPostsForFollows: GetPostsForFollowsUseCase,

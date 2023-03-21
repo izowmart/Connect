@@ -22,31 +22,32 @@ import java.io.IOException
 class ChatRepositoryImpl(
     private val chatApi: ChatApi,
     private val okHttpClient: OkHttpClient
-): ChatRepository {
+) : ChatRepository {
 
     private var chatService: ChatService? = null
 
+    // We initialize scarlet by creating its instance first
     override fun initialize() {
-       chatService = ScarletInstance.getNewInstance(okHttpClient)
+        chatService = ScarletInstance.getNewInstance(okHttpClient)
     }
 
     override suspend fun getChatsForUser(): Resource<List<Chat>> {
-      return try {
-          val chats = chatApi
-              .getChatsForUser()
-              .mapNotNull {
-                  it.toChat()
-              }
-          Resource.Success(data = chats)
-      }catch (e: IOException){
-          Resource.Error(
-              uiText = UiText.StringResource(R.string.error_couldnt_reach_server)
-          )
-      }catch (e: HttpException){
-          Resource.Error(
-              uiText = UiText.StringResource(R.string.oops_something_went_wrong)
-          )
-      }
+        return try {
+            val chats = chatApi
+                .getChatsForUser()
+                .mapNotNull {// Won't map if there is a null field.
+                    it.toChat()
+                }
+            Resource.Success(data = chats)
+        } catch (e: IOException) {
+            Resource.Error(
+                uiText = UiText.StringResource(R.string.error_couldnt_reach_server)
+            )
+        } catch (e: HttpException) {
+            Resource.Error(
+                uiText = UiText.StringResource(R.string.oops_something_went_wrong)
+            )
+        }
     }
 
     override suspend fun getMessagesForChat(
@@ -59,36 +60,41 @@ class ChatRepositoryImpl(
                 .getMessagesForChat(chatId, page, pageSize)
                 .map { it.toMessage() }
             Resource.Success(data = messages)
-        } catch(e: IOException) {
+        } catch (e: IOException) {
             Resource.Error(
                 uiText = UiText.StringResource(R.string.error_couldnt_reach_server)
             )
-        } catch(e: HttpException) {
+        } catch (e: HttpException) {
             Resource.Error(
                 uiText = UiText.StringResource(R.string.oops_something_went_wrong)
             )
         }
     }
 
+    // We observe events such as connection established in the scarlet with the backend server
     override fun observeChatEvents(): Flow<WebSocket.Event> {
-       return chatService?.observeEvent()
-           ?.receiveAsFlow() ?: flow{}
+        return chatService?.observeEvent()
+            ?.receiveAsFlow() ?: flow { }
     }
 
+    // Observe the incoming messages and receive them as flows
     override fun observeMessages(): Flow<Message> {
         return chatService
             ?.observeMessages()
             ?.receiveAsFlow()
-            ?.map{it.toMessage()} ?: flow {}
+            ?.map {
+                it.toMessage()
+            } ?: flow {}
     }
 
+    // send a message to the backend server using WsClientMessage data
     override fun sendMessage(toId: String, text: String, chatId: String?) {
-      chatService?.sendMessage(
-          WsClientMessage(
-              toId = toId,
-              text = text,
-              chatId = chatId
-          )
-      )
+        chatService?.sendMessage(
+            WsClientMessage(
+                toId = toId,
+                text = text,
+                chatId = chatId
+            )
+        )
     }
 }

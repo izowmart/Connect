@@ -7,7 +7,6 @@ import com.example.connect.feature_chat.domain.repository.ChatRepository
 class GetChatsForUser(
     private val repository: ChatRepository
 ) {
-
     suspend operator fun invoke(): Resource<List<Chat>> {
         return repository.getChatsForUser()
     }
