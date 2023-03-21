@@ -101,7 +101,7 @@ fun MessageScreen(
                 items(pagingState.items.size) { i ->
                     val message = pagingState.items[i]
                     if (i >= pagingState.items.size - 1 && !pagingState.endReached && pagingState.isLoading){
-                        viewModel.loadNextMessages()
+                        viewModel.loadNextMessages() // This means that there are more messages still incomming
                     }
                     if (message.fromId == remoteUserId){
                         RemoteMessage(

@@ -86,6 +86,7 @@ class MessageViewModel @Inject constructor(
         }
     }
 
+    // This will observe the connection of websocket with the server
     private fun observeChatEvents() {
         chatUseCases.observeChatEvents()
             .onEach { event ->

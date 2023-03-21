@@ -18,8 +18,8 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.connect.R
+import com.example.connect.core.domain.states.StandardTextFieldState
 import com.example.connect.core.presentation.theme.SpaceLarge
-import com.example.connect.core.util.states.StandardTextFieldState
 
 @Composable
 fun SendTextField(

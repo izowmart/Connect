@@ -29,7 +29,6 @@ import coil.ImageLoader
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
 import com.example.connect.R
 import com.example.connect.core.presentation.components.ActionRow
 import com.example.connect.core.presentation.components.SendTextField
